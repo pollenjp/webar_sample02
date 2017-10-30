@@ -48,7 +48,7 @@ window.addEventListener("resize", function() {
 });
  
 function onResize(){
-    source.onResizeElement();                            
+    source.onResizeElement();
     source.copyElementSizeTo(renderer.domElement);       
     if(context.arController !== null){                   
         source.copyElementSizeTo(context.arController.canvas);   
@@ -56,23 +56,63 @@ function onResize(){
 }
 
 
-
-var marker = new THREE.Group();                       
-var controls = new THREEx.ArMarkerControls(context, marker, {     
+//////////////////////////////////////////////////////////////////////////////
+////////////hiro-marker
+var hiro_marker = new THREE.Group();                       
+var controls = new THREEx.ArMarkerControls(context, hiro_marker, {
     type: "pattern",                                     
-    patternUrl: "./patt/ut-virtual.patt",                             
+    patternUrl: "./patt/hiro.patt",                             
 });
-scene.add(marker);                                    
+scene.add(hiro_marker);
 
 var loader = new THREE.GLTFLoader();
-loader.load("./gltf/geometory03.gltf", function( gltf ){
-    marker.add( gltf.scene );
+loader.load("./gltf/face/face.gltf", function( gltf ){
+    hiro_marker.add( gltf.scene );
     gltf.animations;
     gltf.scene;
     gltf.scenes;
     gltf.cameras;
 });
+//////////////////////////////////////////////////////////////////////////////
 
+
+//////////////////////////////////////////////////////////////////////////////
+////////////kanji_marker
+var kanji_marker = new THREE.Group();                       
+var controls = new THREEx.ArMarkerControls(context, kanji_marker, {
+    type: "pattern",                                     
+    patternUrl: "./patt/kanji.patt",                             
+});
+scene.add(kanji_marker);
+
+var loader = new THREE.GLTFLoader();
+loader.load("./gltf/monkey/monkey.gltf", function( gltf ){
+    kanji_marker.add( gltf.scene );
+    gltf.animations;
+    gltf.scene;
+    gltf.scenes;
+    gltf.cameras;
+});
+//////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////
+////////////utv-marker
+var utv_marker = new THREE.Group();                       
+var controls = new THREEx.ArMarkerControls(context, utv_marker, {
+    type: "pattern",                                     
+    patternUrl: "./patt/ut-virtual.patt",                             
+});
+scene.add(utv_marker);
+
+var loader = new THREE.GLTFLoader();
+loader.load("./gltf/geometory03/geometory03.gltf", function( gltf ){
+    utv_marker.add( gltf.scene );
+    gltf.animations;
+    gltf.scene;
+    gltf.scenes;
+    gltf.cameras;
+});
+//////////////////////////////////////////////////////////////////////////////
 
 function renderScene() {                               
     requestAnimationFrame(renderScene);                  
