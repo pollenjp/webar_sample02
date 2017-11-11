@@ -56,8 +56,8 @@ function onResize(){
 }
 
 
-//////////////////////////////////////////////////////////////////////////////
-////////////hiro-marker
+////////////////////////////////////////////////////////////////////////////
+//////////hiro-marker
 var hiro_marker = new THREE.Group();                       
 var controls = new THREEx.ArMarkerControls(context, hiro_marker, {
     type: "pattern",                                     
@@ -73,7 +73,7 @@ loader.load("./gltf/face/face.gltf", function( gltf ){
     gltf.scenes;
     gltf.cameras;
 });
-//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -107,6 +107,25 @@ scene.add(utv_marker);
 var loader = new THREE.GLTFLoader();
 loader.load("./gltf/geometory03/geometory03.gltf", function( gltf ){
     utv_marker.add( gltf.scene );
+    gltf.animations;
+    gltf.scene;
+    gltf.scenes;
+    gltf.cameras;
+});
+//////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////
+////////////utv-marker
+var utv_tamago_ware = new THREE.Group();                       
+var controls = new THREEx.ArMarkerControls(context, utv_tamago_ware, {
+    type: "pattern",                                     
+    patternUrl: "./patt/utvirtual_tamagohibiware_pattern_marker.patt",                             
+});
+scene.add(utv_tamago_ware);
+
+var loader = new THREE.GLTFLoader();
+loader.load("./gltf/sample_object01/sample_object01.gltf", function( gltf ){
+    utv_tamago_ware.add( gltf.scene );
     gltf.animations;
     gltf.scene;
     gltf.scenes;
