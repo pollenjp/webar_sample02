@@ -15,6 +15,7 @@ var light = new THREE.DirectionalLight(0xffffff);
 light.position.set(0, 0, 2);                           
 scene.add(light);                                      
 
+//var controls = new THREE.OrbitControls( camera, renderer.domElement );
 
 
 
@@ -115,7 +116,11 @@ loader.load("./gltf/geometory03/geometory03.gltf", function( gltf ){
 //////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////
-////////////utv-marker
+////////////utv_tamago
+var gltf = null;
+var mixer = null;
+var clock = new THREE.Clock();
+
 var utv_tamago_ware = new THREE.Group();                       
 var controls = new THREEx.ArMarkerControls(context, utv_tamago_ware, {
     type: "pattern",                                     
@@ -125,12 +130,31 @@ scene.add(utv_tamago_ware);
 
 var loader = new THREE.GLTFLoader();
 loader.load("./gltf/sample_object01/sample_object01.gltf", function( gltf ){
+    var animations = gltf.animations;
+    if ( animations && animations.length ) {
+        mixer = new THREE.AnimationMixer( gltf.scene );
+        for ( var i = 0; i < animations.length; i ++ ) {
+            var animation = animations[ i ];
+            mixer.clipAction( animation ).play();
+        }
+    }
     utv_tamago_ware.add( gltf.scene );
-    gltf.animations;
+    //utv_tamago_ware.add( gltf.animation );
+    gltf.animation
     gltf.scene;
     gltf.scenes;
     gltf.cameras;
 });
+function animate() {
+    requestAnimationFrame( animate );
+    if (mixer) mixer.update(clock.getDelta());
+    //orbitControls.update();
+    //controls.update();
+    //renderScene();
+}
+animate();
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
 function renderScene() {                               
@@ -139,5 +163,8 @@ function renderScene() {
     context.update(source.domElement);                   
     renderer.render(scene, camera);                      
 }
+
+//////////////////////////////////////////////////////////////////////////////
+//var orbitControls = new THREE.OrbitControls(camera, renderer.domElement);
 renderScene();                                         
 
