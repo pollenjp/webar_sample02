@@ -129,12 +129,12 @@ var controls = new THREEx.ArMarkerControls(context, utv_tamago_ware, {
 scene.add(utv_tamago_ware);
 
 var loader = new THREE.GLTFLoader();
-//loader.load("./gltf/sample_object01/sample_object01.gltf", function( gltf ){
+loader.load("./gltf/sample_object01/sample_object01.gltf", function( gltf ){
 //loader.load("./gltf/sample_object02/sample_object02.gltf", function( gltf ){
 //loader.load("./gltf/utvirtual_komaba2017/utvirtual_logo_ar.gltf", function( gltf ){
 //loader.load("./gltf/utvirtual_3d_logo_ar02/utvirtual_3d_logo_ar02.gltf", function( gltf ){
 //loader.load("./gltf/utvirtual_3d_logo_pollenjp02/utvirtual_3d_logo_pollenjp02.gltf", function( gltf ){
-loader.load("./gltf/utvirtual_3d_logo_pollenjp03/utvirtual_3d_logo_pollenjp03.gltf", function( gltf ){
+//loader.load("./gltf/utvirtual_3d_logo_pollenjp03/utvirtual_3d_logo_pollenjp03.gltf", function( gltf ){
     var animations = gltf.animations;
     if ( animations && animations.length ) {
         mixer = new THREE.AnimationMixer( gltf.scene );
